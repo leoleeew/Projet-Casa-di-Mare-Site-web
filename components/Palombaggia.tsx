@@ -14,7 +14,7 @@ export default function Palombaggia() {
       {/* Full-bleed atmospheric image */}
       <div className="relative h-[65vh] md:h-[75vh] overflow-hidden">
         <Image
-          src="/images/exterieur/palombaggia-plage-porto-vecchio-3.jpg"
+          src="/images/alentours/Palombaggia.jpg"
           alt="Vue panoramique sur la baie de Palombaggia depuis la maison, mer turquoise et maquis corse"
           fill
           className="object-cover"

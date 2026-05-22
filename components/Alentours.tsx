@@ -31,7 +31,7 @@ const items: AlentoursItem[] = [
     type: 'Ville',
     description:
       'Citadelle génoise, marché estival, restaurants, boutiques. La ville haute offre une vue époustouflante sur le golfe.',
-    image: '/images/alentours/porto-vecchio.jpg',
+    image: '/images/alentours/Porto Vecchio.jpg',
     gradient: 'linear-gradient(135deg, #C4956A 0%, #9A6840 50%, #6B4220 100%)',
   },
   {
