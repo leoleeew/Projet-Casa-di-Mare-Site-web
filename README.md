@@ -1,36 +1,144 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Casa di Mare — Site web
 
-## Getting Started
+Site vitrine pour la location de vacances Casa di Mare, Palombaggia, Corse du Sud.
 
-First, run the development server:
+---
+
+## Démarrage rapide
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Remplacer les photos
 
-## Learn More
+Toutes les photos sont dans le dossier `public/images/`, organisées par pièce :
 
-To learn more about Next.js, take a look at the following resources:
+| Dossier               | Pièce                         |
+|-----------------------|-------------------------------|
+| `piscine/`            | La piscine                    |
+| `terrasse/`           | Les terrasses                 |
+| `exterieur/`          | Extérieurs et jardin          |
+| `drone/`              | Vues aériennes drone          |
+| `salon/`              | Salon maison principale       |
+| `cuisine/`            | Cuisine maison principale     |
+| `chambre1/`           | Chambre 1 maison principale   |
+| `chambre2/`           | Chambre 2 maison principale   |
+| `chambre-parentale/`  | Suite parentale gîte          |
+| `dortoir/`            | Dortoir gîte                  |
+| `sdb1/`               | Salle de bain maison 1        |
+| `sdb2/`               | Salle de bain gîte            |
+| `coin-repas/`         | Coin repas extérieur          |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Pour remplacer une photo, copiez le nouveau fichier dans le bon dossier et mettez à jour le nom dans `components/RoomTour.tsx`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Mettre à jour les informations de contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Ouvrez `components/Contact.tsx` et modifiez les valeurs `value` et `href` dans le tableau `contacts` :
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```typescript
+{ value: 'votre@email.com', href: 'mailto:votre@email.com' }
+{ value: '+33 6 XX XX XX XX', href: 'tel:+336XXXXXXXX' }
+{ value: '@votrecompte', href: 'https://instagram.com/votrecompte' }
+```
+
+Pour ajouter un lien WhatsApp, modifiez le `href` du téléphone :
+```typescript
+href: 'https://wa.me/336XXXXXXXX'
+```
+
+---
+
+## Ajouter ou renommer une pièce dans la visite
+
+Ouvrez `components/RoomTour.tsx` et modifiez le tableau `categories`.
+
+Chaque pièce a cette structure :
+```typescript
+{
+  id: 'identifiant-unique',
+  name: 'Nom affiché',
+  description: 'Description de la pièce...',
+  images: [
+    '/images/dossier/photo1.jpg',
+    '/images/dossier/photo2.jpg',
+  ],
+  imageAlts: [
+    'Description photo 1',
+    'Description photo 2',
+  ],
+}
+```
+
+---
+
+## Changer le titre du héro
+
+Dans `app/page.tsx`, modifiez la prop `title` du composant `ScrollExpandMedia` :
+
+```tsx
+title="Casa di Mare"         // Version française
+// title="A Corsican Summer" // Version anglaise (décommenter pour utiliser)
+```
+
+---
+
+## Intégrer Google Maps
+
+Dans `components/Palombaggia.tsx`, remplacez le bloc `div` avec le commentaire `Carte :` par :
+
+```tsx
+<iframe
+  src="https://www.google.com/maps/embed?pb=..."
+  width="100%"
+  height="192"
+  style={{ border: 0 }}
+  allowFullScreen
+  loading="lazy"
+/>
+```
+
+---
+
+## Déployer sur Netlify (gratuit, 3 minutes)
+
+**Méthode 1 — Glisser-déposer :**
+1. Lancez `npm run build` dans ce dossier
+2. Allez sur [netlify.com](https://netlify.com) et créez un compte
+3. Dans le dashboard, glissez le dossier entier du projet
+4. Netlify détecte Next.js et déploie automatiquement
+
+**Méthode 2 — Via GitHub (recommandé pour les mises à jour) :**
+1. Créez un dépôt sur [github.com](https://github.com)
+2. Poussez ce dossier sur GitHub
+3. Sur Netlify : "Add new site" > "Import from Git"
+4. Chaque modification sur GitHub sera déployée automatiquement
+
+---
+
+## Structure du projet
+
+```
+app/
+  page.tsx          — Page principale
+  layout.tsx        — Mise en page globale, polices
+  globals.css       — Styles globaux, couleurs
+components/
+  ui/
+    scroll-expansion-hero.tsx  — Animation héro
+  Navigation.tsx    — Barre de navigation flottante
+  Introduction.tsx  — Section d'introduction
+  Features.tsx      — Barre d'équipements
+  RoomTour.tsx      — Visite immersive pièce par pièce
+  Palombaggia.tsx   — Section plage et environs
+  Contact.tsx       — Informations de contact
+  Footer.tsx        — Pied de page
+public/
+  images/           — Toutes les photos de la propriété
+```
