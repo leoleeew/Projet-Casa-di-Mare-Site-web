@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Image from 'next/image';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 interface Room {
   id: string;
@@ -513,10 +513,20 @@ export default function RoomTour() {
               transition={{ duration: 0.3 }}
               className="p-6 md:p-8"
             >
-              {/* Photo principale — centrée */}
-              <div
-                className="relative w-full mb-4"
+              {/* Photo principale — swipeable */}
+              <motion.div
+                className="relative w-full mb-4 overflow-hidden group cursor-grab active:cursor-grabbing select-none"
                 style={{ background: '#EDE5D8', height: '400px' }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.12}
+                onDragEnd={(_, info) => {
+                  if (info.offset.x < -50 && activeImageIdx < activeRoom.images.length - 1) {
+                    setActiveImageIdx(activeImageIdx + 1);
+                  } else if (info.offset.x > 50 && activeImageIdx > 0) {
+                    setActiveImageIdx(activeImageIdx - 1);
+                  }
+                }}
               >
                 <Image
                   key={`${activeRoom.id}-${activeImageIdx}`}
@@ -524,16 +534,51 @@ export default function RoomTour() {
                   alt={activeRoom.imageAlts[activeImageIdx]}
                   fill
                   sizes="(max-width: 768px) 100vw, 70vw"
-                  className="object-contain"
+                  className="object-contain pointer-events-none"
                   loading="lazy"
+                  draggable={false}
                 />
+
+                {/* Flèche gauche */}
+                {activeImageIdx > 0 && (
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setActiveImageIdx(activeImageIdx - 1); }}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-2"
+                    style={{ background: 'rgba(28,28,28,0.5)', color: '#F5EFE6' }}
+                  >
+                    <ChevronLeft size={18} strokeWidth={1.5} />
+                  </button>
+                )}
+
+                {/* Flèche droite */}
+                {activeImageIdx < activeRoom.images.length - 1 && (
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setActiveImageIdx(activeImageIdx + 1); }}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-2"
+                    style={{ background: 'rgba(28,28,28,0.5)', color: '#F5EFE6' }}
+                  >
+                    <ChevronRight size={18} strokeWidth={1.5} />
+                  </button>
+                )}
+
+                {/* Compteur */}
                 <div
                   className="absolute bottom-3 right-3 text-xs px-2 py-1 z-10"
                   style={{ background: 'rgba(28,28,28,0.55)', color: '#F5EFE6', letterSpacing: '0.1em' }}
                 >
                   {activeImageIdx + 1} / {activeRoom.images.length}
                 </div>
-              </div>
+
+                {/* Hint swipe — mobile uniquement, disparaît après 1ère interaction */}
+                {activeRoom.images.length > 1 && activeImageIdx === 0 && (
+                  <div
+                    className="absolute bottom-3 left-3 text-xs px-2 py-1 md:hidden"
+                    style={{ background: 'rgba(28,28,28,0.45)', color: 'rgba(245,239,230,0.7)' }}
+                  >
+                    ← Glisser →
+                  </div>
+                )}
+              </motion.div>
 
               {/* Miniatures — grille sur 2 lignes */}
               {activeRoom.images.length > 1 && (
