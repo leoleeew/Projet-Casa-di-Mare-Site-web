@@ -133,14 +133,14 @@ const categories: Category[] = [
   },
   {
     id: 'gite',
-    label: 'Le Gîte',
+    label: 'Seconde Maison',
     rooms: [
       {
         id: 'chambre-parentale',
         name: 'Suite Parentale',
         /* EN: The master bedroom of the second house is a haven of peace. Generous space, quality bedding, and a private bathroom — a corner reserved for adults who want to rest. */
         description:
-          'La suite parentale du gîte est un havre de paix. Espace généreux, literie de qualité, salle de bain privative — un coin réservé aux adultes qui veulent se ressourcer.',
+          'La suite parentale du seconde maison est un havre de paix. Espace généreux, literie de qualité, salle de bain privative — un coin réservé aux adultes qui veulent se ressourcer.',
         images: [
           '/images/chambre-parentale/IMG_5883.jpeg',
           '/images/chambre-parentale/IMG_5884.jpeg',
@@ -151,7 +151,7 @@ const categories: Category[] = [
           '/images/chambre-parentale/IMG_6543.jpeg',
         ],
         imageAlts: [
-          'Suite parentale gîte, lit double confortable',
+          'Suite parentale seconde maison, lit double confortable',
           'Suite parentale, ambiance lumineuse et reposante',
           'Chambre parentale, décoration naturelle',
           'Suite parentale, détail literie',
@@ -174,7 +174,7 @@ const categories: Category[] = [
         ],
         imageAlts: [
           'Dortoir avec lits superposés',
-          'Dortoir gîte, ambiance enfants',
+          'Dortoir seconde maison, ambiance enfants',
           'Détail dortoir, espace de rangement',
           'Dortoir vue d\'ensemble',
         ],
@@ -184,7 +184,7 @@ const categories: Category[] = [
         name: 'Salle de bain',
         /* EN: The second house's bathroom, bright and functional, serves the master suite and the dormitory. Simple, clean, everything you need. */
         description:
-          'La salle de bain du gîte, lumineuse et fonctionnelle, dessert la suite parentale et le dortoir. Simple, nette, tout ce qu\'il faut.',
+          'La salle de bain du seconde maison, lumineuse et fonctionnelle, dessert la suite parentale et le dortoir. Simple, nette, tout ce qu\'il faut.',
         images: [
           '/images/sdb2/b786cf54-f52c-4887-ace7-7f5d3dec62c4.JPG',
           '/images/sdb2/7f11a843-5d21-4e7d-92ac-89ae2a79d7ce.JPG',
@@ -194,12 +194,12 @@ const categories: Category[] = [
           '/images/sdb2/ea131da4-d4e9-405f-9faf-c93e6ada404b.JPG',
         ],
         imageAlts: [
-          'Détail salle de bain gîte',
-          'Salle de bain gîte',
-          'Douche salle de bain gîte',
-          'Salle de bain gîte, vue d\'ensemble',
-          'Salle de bain gîte, équipements',
-          'Détail salle de bain gîte',
+          'Détail salle de bain seconde maison',
+          'Salle de bain seconde maison',
+          'Douche salle de bain seconde maison',
+          'Salle de bain seconde maison, vue d\'ensemble',
+          'Salle de bain seconde maison, équipements',
+          'Détail salle de bain seconde maison',
         ],
       },
     ],
