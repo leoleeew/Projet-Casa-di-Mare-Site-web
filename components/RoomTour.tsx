@@ -540,26 +540,32 @@ export default function RoomTour() {
                 />
 
                 {/* Flèche gauche */}
-                {activeImageIdx > 0 && (
-                  <button
-                    onClick={(e) => { e.stopPropagation(); setActiveImageIdx(activeImageIdx - 1); }}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-2"
-                    style={{ background: 'rgba(28,28,28,0.5)', color: '#F5EFE6' }}
-                  >
-                    <ChevronLeft size={18} strokeWidth={1.5} />
-                  </button>
-                )}
+                <button
+                  onClick={(e) => { e.stopPropagation(); if (activeImageIdx > 0) setActiveImageIdx(activeImageIdx - 1); }}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-10 p-2 transition-all duration-200 hover:scale-110 active:scale-95"
+                  style={{
+                    background: 'rgba(28,28,28,0.5)',
+                    color: '#F5EFE6',
+                    opacity: activeImageIdx > 0 ? 1 : 0.2,
+                    cursor: activeImageIdx > 0 ? 'pointer' : 'default',
+                  }}
+                >
+                  <ChevronLeft size={20} strokeWidth={1.5} />
+                </button>
 
                 {/* Flèche droite */}
-                {activeImageIdx < activeRoom.images.length - 1 && (
-                  <button
-                    onClick={(e) => { e.stopPropagation(); setActiveImageIdx(activeImageIdx + 1); }}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-2"
-                    style={{ background: 'rgba(28,28,28,0.5)', color: '#F5EFE6' }}
-                  >
-                    <ChevronRight size={18} strokeWidth={1.5} />
-                  </button>
-                )}
+                <button
+                  onClick={(e) => { e.stopPropagation(); if (activeImageIdx < activeRoom.images.length - 1) setActiveImageIdx(activeImageIdx + 1); }}
+                  className="absolute right-12 top-1/2 -translate-y-1/2 z-10 p-2 transition-all duration-200 hover:scale-110 active:scale-95"
+                  style={{
+                    background: 'rgba(28,28,28,0.5)',
+                    color: '#F5EFE6',
+                    opacity: activeImageIdx < activeRoom.images.length - 1 ? 1 : 0.2,
+                    cursor: activeImageIdx < activeRoom.images.length - 1 ? 'pointer' : 'default',
+                  }}
+                >
+                  <ChevronRight size={20} strokeWidth={1.5} />
+                </button>
 
                 {/* Compteur */}
                 <div
