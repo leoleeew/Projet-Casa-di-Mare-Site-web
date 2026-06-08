@@ -43,7 +43,7 @@ export default function Navigation() {
             alt="Casa di Mare — Palombaggia"
             width={34}
             height={34}
-            className="rounded-full object-cover"
+            className="rounded-full object-contain bg-white p-0.5"
           />
           <span
             className="font-serif text-base font-semibold tracking-tight hidden sm:block transition-colors duration-500"

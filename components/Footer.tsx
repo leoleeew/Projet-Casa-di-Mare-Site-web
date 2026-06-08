@@ -15,7 +15,7 @@ export default function Footer() {
             alt="Casa di Mare — Palombaggia"
             width={48}
             height={48}
-            className="rounded-full object-cover opacity-90"
+            className="rounded-full object-contain bg-white p-0.5 opacity-90"
           />
           <div>
             <p
