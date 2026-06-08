@@ -1,25 +1,36 @@
+import Image from 'next/image';
+
 export default function Footer() {
   return (
     <footer
       className="px-6 py-10"
       style={{ background: '#2D4A3E', borderTop: '1px solid rgba(245,239,230,0.08)' }}
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
 
-        {/* Left — branding */}
-        <div>
-          <p
-            className="font-serif text-lg tracking-tight"
-            style={{ color: 'rgba(245,239,230,0.85)' }}
-          >
-            Casa di Mare
-          </p>
-          <p
-            className="text-xs mt-1 uppercase tracking-[0.22em]"
-            style={{ color: 'rgba(245,239,230,0.3)' }}
-          >
-            Palombaggia · Corse du Sud
-          </p>
+        {/* Left — branding avec logo */}
+        <div className="flex items-center gap-4">
+          <Image
+            src="/images/logo.jpeg"
+            alt="Casa di Mare — Palombaggia"
+            width={48}
+            height={48}
+            className="rounded-full object-cover opacity-90"
+          />
+          <div>
+            <p
+              className="font-serif text-lg tracking-tight"
+              style={{ color: 'rgba(245,239,230,0.85)' }}
+            >
+              Casa di Mare
+            </p>
+            <p
+              className="text-xs mt-0.5 uppercase tracking-[0.22em]"
+              style={{ color: 'rgba(245,239,230,0.3)' }}
+            >
+              Palombaggia · Corse du Sud
+            </p>
+          </div>
         </div>
 
         {/* Right — legal */}

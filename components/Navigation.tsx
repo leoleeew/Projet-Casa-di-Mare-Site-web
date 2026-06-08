@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const links = [
   { href: '#maisons',    label: 'Les Maisons' },
@@ -33,9 +34,18 @@ export default function Navigation() {
       }}
     >
       <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-        <span className="font-serif text-base font-semibold tracking-tight" style={{ color: '#1C1C1C' }}>
-          Casa di Mare
-        </span>
+        <a href="#" className="flex items-center gap-2 flex-shrink-0">
+          <Image
+            src="/images/logo.jpeg"
+            alt="Casa di Mare — Palombaggia"
+            width={36}
+            height={36}
+            className="rounded-full object-cover"
+          />
+          <span className="font-serif text-base font-semibold tracking-tight hidden sm:block" style={{ color: '#1C1C1C' }}>
+            Casa di Mare
+          </span>
+        </a>
 
         <ul className="hidden md:flex items-center gap-9">
           {links.map((l) => (
