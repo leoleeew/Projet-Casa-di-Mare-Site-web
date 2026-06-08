@@ -38,14 +38,16 @@ export default function Navigation() {
 
         {/* Logo + nom */}
         <a href="#" className="flex items-center gap-2.5 flex-shrink-0">
-          <Image
-            src="/images/logo.jpeg"
-            alt="Casa di Mare — Palombaggia"
-            width={34}
-            height={34}
-            className="rounded-full object-contain bg-white p-0.5"
-            style={{ objectPosition: '56% center' }}
-          />
+          <div className="rounded-full overflow-hidden flex-shrink-0 bg-white" style={{ width: 36, height: 36 }}>
+            <Image
+              src="/images/logo.jpeg"
+              alt="Casa di Mare — Palombaggia"
+              width={36}
+              height={36}
+              className="w-full h-full"
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
           <span
             className="font-serif text-base font-semibold tracking-tight hidden sm:block transition-colors duration-500"
             style={{ color: scrolled ? '#1C1C1C' : 'rgba(245,239,230,0.92)' }}

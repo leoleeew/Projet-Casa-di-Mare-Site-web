@@ -10,14 +10,16 @@ export default function Footer() {
 
         {/* Left — branding avec logo */}
         <div className="flex items-center gap-4">
-          <Image
-            src="/images/logo.jpeg"
-            alt="Casa di Mare — Palombaggia"
-            width={48}
-            height={48}
-            className="rounded-full object-contain bg-white p-0.5 opacity-90"
-            style={{ objectPosition: '56% center' }}
-          />
+          <div className="rounded-full overflow-hidden flex-shrink-0 bg-white opacity-90" style={{ width: 50, height: 50 }}>
+            <Image
+              src="/images/logo.jpeg"
+              alt="Casa di Mare — Palombaggia"
+              width={50}
+              height={50}
+              className="w-full h-full"
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
           <div>
             <p
               className="font-serif text-lg tracking-tight"
