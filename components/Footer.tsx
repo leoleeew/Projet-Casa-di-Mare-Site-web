@@ -16,6 +16,7 @@ export default function Footer() {
             width={48}
             height={48}
             className="rounded-full object-contain bg-white p-0.5 opacity-90"
+            style={{ objectPosition: '56% center' }}
           />
           <div>
             <p

@@ -44,6 +44,7 @@ export default function Navigation() {
             width={34}
             height={34}
             className="rounded-full object-contain bg-white p-0.5"
+            style={{ objectPosition: '56% center' }}
           />
           <span
             className="font-serif text-base font-semibold tracking-tight hidden sm:block transition-colors duration-500"
